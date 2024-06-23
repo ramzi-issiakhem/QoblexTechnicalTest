@@ -13,9 +13,6 @@ namespace App
         public string ProductName { get; set; }
 
   
-        
-
-        /////////////////////////////////////////////////
 
 
         public FinalProduct(string productName) : this()

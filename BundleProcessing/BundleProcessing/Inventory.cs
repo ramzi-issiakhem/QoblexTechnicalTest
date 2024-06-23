@@ -7,14 +7,7 @@ namespace App
 {
     public class Inventory
     {
-
-  
         public int Amount { get; set; }
-
-        
-
-
-        //////////////////////////////////
 
         public Inventory()
         {

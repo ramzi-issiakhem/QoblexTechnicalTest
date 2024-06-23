@@ -12,15 +12,6 @@ namespace App
         public string Name { get; set; }
 
         public int PieceNumber { get; set; }
-
-        public List<FinalProduct> FinalProducts { get; } = [];
-        //public ICollection<BundleBundle> BundleSubBundles { get; } = [];
-       
-        /////////////////////////////////////////////////
-
-        //public List<Bundle> bundles { get; } = [];
-        //public List<BundleBundle> subBundles { get; } = [];
-
          
 
 
@@ -91,30 +82,5 @@ namespace App
         }
     }
 
-
-
-    public class BundleFinalProduct
-    {
-        public int Id { get; set; }
-        public int BundleId { get; set; }
-        public Bundle Bundle { get; set; }
-
-        public int FinalProductId { get; set; }
-        public FinalProduct FinalProduct { get; set; }
-
-        public int AmountNeeded { get; set; }
-    }
-
-    public class BundleBundle
-    {
-        public int Id { get; set; }
-        public int BundleId { get; set; }
-        public Bundle Bundle { get; set; }
-
-        public int SubBundleId { get; set; }
-        public Bundle SubBundle { get; set; }
-
-        public int AmountNeeded { get; set; }
-    }
   
 }
