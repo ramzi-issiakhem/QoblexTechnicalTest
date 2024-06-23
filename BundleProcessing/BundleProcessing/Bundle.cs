@@ -5,6 +5,7 @@ using System.Numerics;
 namespace App
 {
 
+    // This class represents a Bundle and its structure
     public class Bundle
     {
 
@@ -25,22 +26,27 @@ namespace App
             this._bundles = new Dictionary<Bundle,int>();
         }
 
+        // Add a Final Product to the Bundle
         public void addFinalProduct(FinalProduct FinalProduct,int amountNeeded)
         {
             this._FinalProducts.Add(FinalProduct, amountNeeded);
         }
 
+
+        // Add a Bundle to the Bundle
         public void addBundle(Bundle bundle,int amountNeeded)
         {
             this._bundles.Add(bundle,amountNeeded);
         }
 
+
+        // Generate the Bundle Tree from the Console Input
         public void generateBundleTreeFromConsoleInput()
         {
             this.Name = ConsoleUtils.GetNonEmptyStringInput("\nWhat is the Bundle name you want to build");
             this.PieceNumber = ConsoleUtils.GetPositiveNumberInput($"\nHow many pieces is the Bundle '{this.Name}' composed of");
 
-            
+            // Loop through the Pieces needed to build the Bundle
             Console.WriteLine($"We are going now to go through each {PieceNumber} Pieces needed to build the {Name}");
             for (int i = 0; i < this.PieceNumber; i++)
             {

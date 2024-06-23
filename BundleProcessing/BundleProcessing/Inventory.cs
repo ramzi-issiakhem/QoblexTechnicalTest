@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace App
 {
+    // This class represents the Inventory of the Products
     public class Inventory
     {
         public int Amount { get; set; }
@@ -19,6 +20,7 @@ namespace App
         private static Inventory instance;
 
 
+        // Singleton Pattern to make sure we have only one instance of the Inventory
         public static Inventory GetInstance()
         {
             if (instance == null)
@@ -28,6 +30,8 @@ namespace App
             return instance;
         }
 
+
+        // Add or Create an Item in the Inventory
         public int AddOrCreateItem(string name, int amount)
         {
             if (inventory.ContainsKey(name))
@@ -42,6 +46,7 @@ namespace App
             return inventory[name];
         }
 
+        // Substract an Item from the Inventory
         public int SubstractItem(string name, int amount)
         {
             if (inventory.ContainsKey(name))
@@ -56,18 +61,24 @@ namespace App
             return inventory[name];
         }
 
+
+        // Get the amount of an Item in the Inventory
         public int GetItemAmount(string name) { return inventory.ContainsKey(name) ? inventory[name] : 0; }
 
+        // Count the number of Items in the Inventory
         public int CountInventory()
         {
             return inventory.Count;
         }
 
+        // Retrieve the Inventory Items Amount from the User according the Bundle Structure
         internal void intiateFromBundle(Bundle bundle)
         {
+            // We will go through the Bundle Structure and ask the User to input the amount of each Product in the Inventory
             Console.WriteLine($"We are going to go through the {bundle.Name} Bundle Inventory");
             foreach (KeyValuePair<FinalProduct, int> product in bundle.GetFinalProducts())
             {
+                // Check if the Inventory already has the Product
                 if (this.GetItemAmount(product.Key.ProductName) > 0)
                 {
                     Console.WriteLine($"The Inventory already has {this.GetItemAmount(product.Key.ProductName)} of {product.Key.ProductName}");
@@ -91,6 +102,7 @@ namespace App
             }
         }
 
+        // Calculate the amount of Bundles that can be created with the current Inventory
         public int CalculateAmountOfBundles(Bundle bundle)
         {
             // TO AVOID THE PROBLEM OF USING ALL THE INVENTORY SPARE PARTS FOR EITHER CONSTRUCTING A BUNDLE OR A PRODUCT IN THE 
@@ -126,6 +138,7 @@ namespace App
 
             if (canBuild)
             {
+                // If we have enough parts to build the products, we will build them
                 foreach (KeyValuePair<FinalProduct, int> product in bundle.GetFinalProducts())
                 {
                     this.SubstractItem(product.Key.ProductName, product.Value);
@@ -133,6 +146,7 @@ namespace App
 
                 productsBuilt = true;
 
+                // We will then check if we have enough parts to build the sub bundles
                 foreach (KeyValuePair<Bundle, int> bundleLocal in bundle.GetBundles())
                 {
                     for (int i = 0; i < bundleLocal.Value; i++)
@@ -148,6 +162,7 @@ namespace App
 
             if (!canBuild)
             {
+                // If we can't build the bundle, we will add back the products we built
                 if (productsBuilt)
                 {
                     foreach (KeyValuePair<FinalProduct, int> product in bundle.GetFinalProducts())
