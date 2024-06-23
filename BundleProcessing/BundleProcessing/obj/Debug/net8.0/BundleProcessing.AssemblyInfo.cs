@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BundleProcessing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0344d3240ed9c13676c3323f4e132d5a8919cd8")]
 [assembly: System.Reflection.AssemblyProductAttribute("BundleProcessing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BundleProcessing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
